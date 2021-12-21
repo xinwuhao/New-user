@@ -1,0 +1,75 @@
+<template>
+  <div class="container">
+    <div class="content">
+      <h4>新增用户</h4>
+ <div>
+   <el-button type="primary" icon="el-icon-plus" @click="dialogVisible = true"
+      >新增用户</el-button
+    >
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
+      <el-form
+        :model="ruleForm"
+        :rules="rules"
+        ref="ruleForm"
+        label-width="100px"
+        class="demo-ruleForm"
+      >
+        <el-form-item label="名称" prop="name">
+          <el-input v-model="ruleForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="性别" prop="sex">
+          <el-radio-group v-model="ruleForm.sex">
+            <el-radio label="男"></el-radio>
+            <el-radio label="女"></el-radio>
+            <el-radio label="隐藏"></el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item label="手机号码" prop="contact">
+          <el-input v-model="ruleForm.contact"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="mailbox">
+          <el-input v-model="ruleForm.mailbox"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('ruleForm')"
+            >立即新增</el-button
+          >
+          <el-button @click="resetForm('ruleForm')">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+ </div>
+    </div>
+  </div>
+</template>
+ 
+<script>
+//引入子组件
+import userAdd from "../components/userAdd/userAdd.vue"
+export default {
+  name: "",
+  props: {},
+  data() {
+    return {};
+  },
+  components: {
+    userAdd
+  },
+  methods: {
+  },
+  mounted() {},
+  computed: {},
+  watch: {},
+};
+</script>
+
+<style lang='scss' scoped>
+.container {
+   display: flex;
+   justify-content: center;
+}
+.content {
+   width: 1450px;
+   /* 注意适配的宽度必须大于最小适配宽度 */
+}
+</style>
